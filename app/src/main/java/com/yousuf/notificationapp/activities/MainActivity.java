@@ -1,13 +1,14 @@
 package com.yousuf.notificationapp.activities;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-
 import com.yousuf.notificationapp.R;
+import com.yousuf.notificationapp.fragements.SimpleInternalNotificationFragment;
 import com.yousuf.notificationapp.interfaces.MediatorInterface;
 
 public class MainActivity extends AppCompatActivity implements MediatorInterface {
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements MediatorInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        changeFragmentTo(new SimpleInternalNotificationFragment(), SimpleInternalNotificationFragment.class.getSimpleName());
     }
 
     @Override
