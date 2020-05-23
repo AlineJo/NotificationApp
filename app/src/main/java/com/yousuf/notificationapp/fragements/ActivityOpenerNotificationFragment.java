@@ -3,7 +3,9 @@ package com.yousuf.notificationapp.fragements;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,18 +17,19 @@ import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import com.yousuf.notificationapp.R;
+import com.yousuf.notificationapp.activities.SecondActivity;
+import com.yousuf.notificationapp.models.MyConstants;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SimpleInternalNotificationFragment extends Fragment {
+public class ActivityOpenerNotificationFragment extends Fragment {
 
 
-    private static final String KEY_CHANNEL_ID = "personal-chat";
-
+    private static final String KEY_CHANNEL_ID = "chat-channel";
     private Context mContext;
 
-    public SimpleInternalNotificationFragment() {
+    public ActivityOpenerNotificationFragment() {
         // Required empty public constructor
     }
 
@@ -55,14 +58,19 @@ public class SimpleInternalNotificationFragment extends Fragment {
     }
 
     private void showNotification() {
-        String msg = "Notification Body";
+        String msg = "تم أيداع مبلغ وقدرة 10,000 في حسابك\n";
         createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext, KEY_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notifications)
-                .setContentTitle("Notification Title")
+                .setContentTitle("Bank")
                 .setContentText(msg)
-                .setPriority(NotificationCompat.PRIORITY_HIGH);
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
+        Intent intent = new Intent(mContext, SecondActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(MyConstants.KEY_MASSAGE, msg);
+        PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        builder.setContentIntent(pendingIntent);
         NotificationManager notificationManager;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             notificationManager = mContext.getSystemService(NotificationManager.class);
