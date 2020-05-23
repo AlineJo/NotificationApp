@@ -1,4 +1,4 @@
-package com.yousuf.notificationapp.fragements;
+package com.yousuf.notificationapp.interfaces;
 
 import androidx.fragment.app.Fragment;
 

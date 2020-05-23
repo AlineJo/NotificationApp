@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.yousuf.notificationapp.R;
-import com.yousuf.notificationapp.fragements.MediatorInterface;
+import com.yousuf.notificationapp.interfaces.MediatorInterface;
 
 public class MainActivity extends AppCompatActivity implements MediatorInterface {
 
