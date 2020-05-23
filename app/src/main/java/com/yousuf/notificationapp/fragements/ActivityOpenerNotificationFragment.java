@@ -58,7 +58,7 @@ public class ActivityOpenerNotificationFragment extends Fragment {
     }
 
     private void showNotification() {
-        String msg = "تم أيداع مبلغ وقدرة 10,000 في حسابك\n";
+        String msg = "تم إيداع مبلغ وقدرة 10,000 في حسابك\n";
         createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(mContext, KEY_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notifications)
